@@ -41,7 +41,7 @@ resource "aws_iam_role" "nodes" {
       Action = "sts:AssumeRole"
       Effect = "Allow"
       Principal = {
-        Service = "://amazonaws.com"
+        Service = "amazonaws.com"
       }
     }]
   })
