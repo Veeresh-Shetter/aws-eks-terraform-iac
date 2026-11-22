@@ -36,6 +36,17 @@ graph TD
 - **Serverless FinOps Automation:** EventBridge triggers a Python AWS Lambda function nightly to scale EKS worker nodes to zero, eliminating idle compute spend.
 - **Shift-Left IaC Security:** GitHub Actions CI enforces `terraform fmt`, `terraform validate`, and Checkov static security analysis on every push.
 
+## Live Deployment Verification
+
+### 1. Amazon EKS Cluster (`ap-south-1`)
+![AWS EKS Cluster](assets/aws-eks-console.png)
+
+### 2. Private EKS Worker Node & Running `gitops-app` Microservice Pods
+![EKS Nodes and Pods](assets/eks-pods-running.png)
+
+### 3. Serverless AWS Lambda & EventBridge FinOps Auto-Scaler
+![AWS Lambda FinOps](assets/aws-lambda-finops.png)
+
 ## Quick Start
 ```bash
 # 1. Bootstrap remote state (S3 + DynamoDB)

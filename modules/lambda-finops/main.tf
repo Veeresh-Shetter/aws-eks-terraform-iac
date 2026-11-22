@@ -72,6 +72,6 @@ resource "aws_lambda_permission" "allow_eventbridge" {
   statement_id  = "AllowExecutionFromEventBridge"
   action        = "lambda:InvokeFunction"
   function_name = aws_lambda_function.eks_scale_down.function_name
-  principal     = "amazonaws.com"
+  principal     = "events.amazonaws.com"
   source_arn    = aws_cloudwatch_event_rule.nightly_scaledown.arn
 }
