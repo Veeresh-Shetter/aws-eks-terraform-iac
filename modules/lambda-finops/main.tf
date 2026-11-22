@@ -13,7 +13,7 @@ resource "aws_iam_role" "lambda_finops" {
       Action = "sts:AssumeRole"
       Effect = "Allow"
       Principal = {
-        Service = "://amazonaws.com"
+        Service = "events.amazonaws.com"
       }
     }]
   })

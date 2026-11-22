@@ -7,7 +7,7 @@ resource "aws_iam_role" "cluster" {
       Action = "sts:AssumeRole"
       Effect = "Allow"
       Principal = {
-        Service = "://amazonaws.com"
+        Service = "ec2.amazonaws.com"
       }
     }]
   })
