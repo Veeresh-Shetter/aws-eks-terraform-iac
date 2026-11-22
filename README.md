@@ -1,6 +1,6 @@
 # Enterprise AWS EKS & Serverless FinOps Infrastructure (Terraform IaC)
 
-Production-grade, modular Infrastructure as Code (IaC) repository that provisions a secure Multi-AZ AWS VPC, private Amazon EKS Kubernetes cluster, and an event-driven AWS Lambda FinOps auto-scaler to host the [`gitops-app`](https://github.com) microservice.
+Production-grade, modular Infrastructure as Code (IaC) repository that provisions a secure Multi-AZ AWS VPC, private Amazon EKS Kubernetes cluster, and an event-driven AWS Lambda FinOps auto-scaler to host the [`gitops-app`](https://github.com/Veeresh-Shetter/gitops-app) microservice.
 
 ## Architecture Overview
 
