@@ -58,3 +58,35 @@ cd ../environments/dev && terraform init && terraform apply
 # 3. Connect kubectl to EKS
 aws eks update-kubeconfig --region ap-south-1 --name veeresh-gitops-eks
 ```
+
+---
+
+## GitOps Add-On Integration (Argo CD Bootstrap Pattern)
+
+To bridge infrastructure provisioning (Project 2) with continuous delivery (Project 1), the EKS cluster supports declarative GitOps bootstrapping using Terraform's `helm_release` resource:
+
+```hcl
+resource "helm_release" "argocd" {
+  name             = "argocd"
+  repository       = "https://argoproj.github.io/argo-helm"
+  chart            = "argo-cd"
+  namespace        = "argocd"
+  create_namespace = true
+  version          = "7.7.10"
+
+  set {
+    name  = "server.service.type"
+    value = "ClusterIP"
+  }
+}
+```
+
+Once provisioned, Argo CD automatically syncs the `gitops-app` Kubernetes manifests from Project 1, while `kube-prometheus-stack` (Project 3) monitors both workloads and cluster health.
+
+---
+
+## Related DevOps Portfolio Projects
+
+1. **[End-to-End Secure GitOps CI/CD Pipeline (`gitops-app`)](https://github.com/Veeresh-Shetter/gitops-app)** — Hardened non-root Go microservice, Trivy CVE scan gate, GHCR, and Argo CD automated sync.
+2. **[Production AWS EKS Infrastructure with Terraform & FinOps (`aws-eks-terraform-iac`)](https://github.com/Veeresh-Shetter/aws-eks-terraform-iac)** *(This Repository)* — Modular Multi-AZ VPC, private Amazon EKS v1.31 cluster, Checkov IaC security CI, and Lambda cost-optimization auto-scaler.
+3. **[Kubernetes Observability Stack (`k8s-prometheus-grafana-observability`)](https://github.com/Veeresh-Shetter/k8s-prometheus-grafana-observability)** — Helm-based Prometheus, Grafana, and Alertmanager monitoring with custom PromQL alerts.
